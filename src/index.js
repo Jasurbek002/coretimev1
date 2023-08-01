@@ -38,7 +38,9 @@ app.decorate("sequelize", postgres_js_1.sequelize);
 //     }
 //   });
 // });
-app.listen({ port: 3000 }, (err, address) => __awaiter(void 0, void 0, void 0, function* () {
+
+const PORT = process.env.PORT || 3000
+app.listen({ port: PORT}, (err, address) => __awaiter(void 0, void 0, void 0, function* () {
     if (err) {
         app.log.error(err);
         yield postgres_js_1.sequelize.close();
