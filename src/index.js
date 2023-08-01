@@ -49,8 +49,8 @@ app.decorate("sequelize", postgres_js_1.sequelize);
 
 
 
-const PORT = process.env.PORT || 3000;
-app.listen({ port: 5000}, (err, address) =>
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, (err, address) =>
   __awaiter(void 0, void 0, void 0, function* () {
     if (err) {
       app.log.error(err);
