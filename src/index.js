@@ -65,9 +65,7 @@ app.decorate("sequelize", postgres_js_1.sequelize);
 //   });
 // });
 
-app.get("/photos", async () => {
-  return "okkkke";
-});
+
 
 const PORT = process.env.PORT || 3000;
 app.listen({ port: PORT }, (err, address) =>
