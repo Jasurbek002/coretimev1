@@ -18,7 +18,7 @@ function REGISTER(req, rep) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const { model, name, device_info, unique_id, device_type } = req.body;
-            const register = yield Device_1.Device.create({
+            let register = yield Device_1.Device.create({
                 model,
                 name,
                 device_info,
@@ -26,9 +26,11 @@ function REGISTER(req, rep) {
                 device_type,
                 device_token: jwt_1.default.sigin(unique_id),
             });
+           
             if (register) {
                 rep.code(201).send({
                     message: "Successfuly added!",
+                    success:true,
                     token: register.device_token,
                 });
             }
@@ -41,14 +43,16 @@ function REGISTER(req, rep) {
         }
     });
 }
+
 function LOGIN(req, rep) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const { unique_id } = req.body;
-            const device = yield Device_1.Device.findOne({
+            let device = yield Device_1.Device.findOne({
                 where: { unique_id: unique_id },
             });
             rep.code(200).send({
+                success:true,
                 message: "sucssess!",
                 token: jwt_1.default.sigin(device.unique_id),
             });
