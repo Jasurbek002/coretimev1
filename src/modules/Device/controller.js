@@ -62,7 +62,27 @@ function LOGIN(req, rep) {
         }
     });
 }
+
+function GET(req, rep) {
+    return __awaiter(this, void 0, void 0, function* () {
+        try {
+            let device = yield Device_1.Device.findAll()
+            rep.code(200).send({
+                success:true,
+                message: "sucssess!",
+                data:device
+            });
+        }
+        catch (error) {
+            return error;
+        }
+    });
+}
+
+
+
 exports.default = {
     REGISTER,
     LOGIN,
+    GET
 };

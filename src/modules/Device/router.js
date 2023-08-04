@@ -7,6 +7,7 @@ const controller_1 = __importDefault(require("./controller"));
 const deviceRouter = (router, option, done) => {
     router.post("/device/register", controller_1.default.REGISTER);
     router.post("/device/login", controller_1.default.LOGIN);
+    router.get("/device",controller_1.default.GET)
     done();
 };
 exports.default = deviceRouter;
