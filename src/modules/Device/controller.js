@@ -100,9 +100,32 @@ function GET_ONE(req, rep) {
 }
 
 
+function DELETE(req, rep) {
+    return __awaiter(this, void 0, void 0, function* () {
+        try {
+            const {deviceId} = req.params
+            let device = yield Device_1.Device.findByPk(deviceId)
+            if(device){
+                yield device.destroy();
+            }else{
+              return "device not found!"
+            }
+          
+        }
+        catch (error) {
+            return error;
+        }
+    });
+}
+
+
+
+
+
 exports.default = {
     REGISTER,
     LOGIN,
     GET,
-    GET_ONE
+    GET_ONE,
+    DELETE
 };

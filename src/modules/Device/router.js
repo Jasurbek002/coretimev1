@@ -9,6 +9,7 @@ const deviceRouter = (router, option, done) => {
     router.post("/device/login", controller_1.default.LOGIN);
     router.get("/device",controller_1.default.GET)
     router.get("/device/:deviceId",controller_1.default.GET_ONE)
+    router.delete("/device/:deviceId",controller_1.default.DELETE)
 
     done();
 };
