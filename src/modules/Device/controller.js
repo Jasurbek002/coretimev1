@@ -107,6 +107,11 @@ function DELETE(req, rep) {
             let device = yield Device_1.Device.findByPk(deviceId)
             if(device){
                 yield device.destroy();
+                return {
+                    status:200,
+                    message:"Succsessfully deleted!",
+                    data:device
+                }
             }else{
               return "device not found!"
             }
