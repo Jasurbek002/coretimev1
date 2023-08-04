@@ -1,6 +1,5 @@
 "use strict";
 
-
 var __awaiter =
   (this && this.__awaiter) ||
   function (thisArg, _arguments, P, generator) {
@@ -41,22 +40,19 @@ var __importDefault =
   };
 Object.defineProperty(exports, "__esModule", { value: true });
 const fastify_1 = __importDefault(require("fastify"));
-const cors= __importDefault(require("cors"));
+const cors = __importDefault(require("@fastify/cors"));
 const postgres_js_1 = require("./lib/postgres.js");
 const router_1 = __importDefault(require("./modules/user/router"));
 const router_2 = __importDefault(require("./modules/Device/router"));
 const port = process.env.PORT || 3000;
-const host = ("RENDER" in process.env) ? `0.0.0.0` : `localhost`;
+const host = "RENDER" in process.env ? `0.0.0.0` : `localhost`;
 const app = (0, fastify_1.default)({ logger: true });
-app.register(cors('*'))
+app.register(cors, { origin: "*" });
 app.register(router_1.default);
 app.register(router_2.default);
 app.decorate("sequelize", postgres_js_1.sequelize);
 
-
-
-
-app.listen({host:host,port:port}, (err, address) =>
+app.listen({ host: host, port: port }, (err, address) =>
   __awaiter(void 0, void 0, void 0, function* () {
     if (err) {
       app.log.error(err);
